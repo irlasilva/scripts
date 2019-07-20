@@ -1,0 +1,69 @@
+Script
+
+usei o servidor aula
+0440140@aula.inf.poa.ifrs.edu.br
+
+
+
+opcao=-1
+
+echo "Início do Log" > log.txt
+date  >> log.txt
+
+while [ $opcao -ne 0 ]
+do
+
+
+    echo 1 - Mostrar o endereço IP
+    echo 2 - Mostrar o nome do usuário logado e qual o caminho do home directory do usuário
+    echo 3 - Mostar numero de usuários conectados na maquina
+    echo 4 - Limpar tela
+    echo 0 - Para sair
+
+    read opcao
+
+    case $opcao in
+        0)
+                echo "bye Bye" >> log.txt
+
+        ;;
+
+        1)
+        echo "Endereço de IP:"
+        ifconfig >> log.txt
+        log.txt
+        ;;
+
+        2)
+        echo "Mostrar nome dos usuários cadastrados na máquina"
+	cat /etc/passwd | grep bash | cut -d: -f1,7
+        log.txt
+        ;;
+
+
+        3)
+        echo "Numero de usuários conectados na maquina:"
+        cut -d: -f 1 /etc/passwd >> saida.txt
+	if wc -l saida.txt -gt 10
+		then 
+		echo "Essa maquina está  com mais de 10 usuários conectados"
+	fi
+        log.txt
+        ;;
+
+
+        4)
+        echo "limpa tela"
+        clear
+        ;;
+
+        *)
+        echo "opcao invalida!"
+        opcao=-1
+        ;;
+    esac
+done
+
+echo "bye"
+
+
