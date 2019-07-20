@@ -1,9 +1,4 @@
-Script
-
-usei o servidor aula
-0440140@aula.inf.poa.ifrs.edu.br
-
-
+#! /bin/bash
 
 opcao=-1
 
